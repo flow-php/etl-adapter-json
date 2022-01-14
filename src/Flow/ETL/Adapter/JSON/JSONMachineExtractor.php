@@ -7,28 +7,22 @@ namespace Flow\ETL\Adapter\JSON;
 use Flow\ETL\Extractor;
 use Flow\ETL\Row;
 use Flow\ETL\Rows;
-use JsonMachine\JsonMachine;
+use JsonMachine\Items;
 
 /**
  * @psalm-immutable
  */
 final class JSONMachineExtractor implements Extractor
 {
-    /**
-     * @psalm-suppress DeprecatedClass
-     */
-    private JsonMachine $reader;
+    private Items $jsonItems;
 
     private int $rowsInBatch;
 
     private string $rowEntryName;
 
-    /**
-     * @psalm-suppress DeprecatedClass
-     */
-    public function __construct(JsonMachine $reader, int $rowsInBatch, string $rowEntryName = 'row')
+    public function __construct(Items $jsonItems, int $rowsInBatch, string $rowEntryName = 'row')
     {
-        $this->reader = $reader;
+        $this->jsonItems = $jsonItems;
         $this->rowsInBatch = $rowsInBatch;
         $this->rowEntryName = $rowEntryName;
     }
@@ -42,7 +36,7 @@ final class JSONMachineExtractor implements Extractor
          *
          * @var array|object $row
          */
-        foreach ($this->reader->getIterator() as $row) {
+        foreach ($this->jsonItems->getIterator() as $row) {
             $rows = $rows->add(Row::create(new Row\Entry\ArrayEntry($this->rowEntryName, (array) $row)));
 
             if ($rows->count() >= $this->rowsInBatch) {
