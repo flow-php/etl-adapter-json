@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4 | ^8.0",
-        "flow-php/etl": "^1.0@dev",
+        "flow-php/etl": "dev-poc/serialization as 1.x-dev",
         "ext-json": "*"
     },
     "require-dev": {

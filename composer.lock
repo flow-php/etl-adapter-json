@@ -4,27 +4,26 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68f794f0d7148e69541f146fb258b5ac",
+    "content-hash": "de56d58ef871613efce4ee65cef684e6",
     "packages": [
         {
             "name": "flow-php/etl",
-            "version": "1.x-dev",
+            "version": "dev-poc/serialization",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flow-php/etl.git",
-                "reference": "80d77c0de9529a7173b547dc89b8ac6d56dd61b9"
+                "reference": "d3fa12d88acaae9809b0bc618320e35e0f44b5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flow-php/etl/zipball/80d77c0de9529a7173b547dc89b8ac6d56dd61b9",
-                "reference": "80d77c0de9529a7173b547dc89b8ac6d56dd61b9",
+                "url": "https://api.github.com/repos/flow-php/etl/zipball/d3fa12d88acaae9809b0bc618320e35e0f44b5ca",
+                "reference": "d3fa12d88acaae9809b0bc618320e35e0f44b5ca",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "php": "^7.4.2 || ~8.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -46,9 +45,9 @@
             ],
             "support": {
                 "issues": "https://github.com/flow-php/etl/issues",
-                "source": "https://github.com/flow-php/etl/tree/1.x"
+                "source": "https://github.com/flow-php/etl/tree/poc/serialization"
             },
-            "time": "2022-02-08T06:15:18+00:00"
+            "time": "2022-02-07T20:41:42+00:00"
         }
     ],
     "packages-dev": [
@@ -108,7 +107,14 @@
             "time": "2022-02-05T17:55:41+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "flow-php/etl",
+            "version": "dev-poc/serialization",
+            "alias": "1.x-dev",
+            "alias_normalized": "1.9999999.9999999.9999999-dev"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "flow-php/etl": 20
