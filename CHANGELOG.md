@@ -32,6 +32,7 @@
 - [247c2f](https://github.com/flow-php/etl-adapter-json/commit/247c2fe106da6a29612354f99ea090cb4a002b3b) - **dependencies** - [@norberttech](https://github.com/norberttech)
 
 ### Removed
+- [a69629](https://github.com/flow-php/etl-adapter-json/commit/a6962912397f5f6af0d6d00b40c3f7db09b29c38) - **failing test in dbal platform** - [@norberttech](https://github.com/norberttech)
 - [#109](https://github.com/flow-php/etl-adapter-json/pull/109) - **Deprecated JSONMachineExtractor.php class** - [@norberttech](https://github.com/norberttech)
 - [bd6bae](https://github.com/flow-php/etl-adapter-json/commit/bd6baefd144977ba3f70104ec6a00b6380beb75d) - **php extensions dependencies** - [@norberttech](https://github.com/norberttech)
 
