@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Flow\ETL\Tests\Benchmark\Adapter\JSON\JSONMachine;
+namespace Flow\ETL\Adapter\JSON\Tests\Benchmark;
 
 use Flow\ETL\DSL\Json;
 use PhpBench\Attributes\Iterations;
@@ -12,6 +12,6 @@ final class JsonExtractorBench
     #[Revs(1000)]
     public function bench_extract() : void
     {
-        Json::from(__DIR__ . '/../../../../Fixtures/timezones.json');
+        Json::from(__DIR__ . '/../Fixtures/timezones.json');
     }
 }

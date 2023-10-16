@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flow\ETL\Tests\Integration\Adapter\JSON;
+namespace Flow\ETL\Adapter\JSON\Tests\Integration;
 
 use Flow\ETL\Adapter\JSON\JsonLoader;
 use Flow\ETL\Config;
