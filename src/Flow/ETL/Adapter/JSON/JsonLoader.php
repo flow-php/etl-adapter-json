@@ -76,7 +76,7 @@ final class JsonLoader implements Closure, Loader, Loader\FileLoader
     public function write(Rows $nextRows, array $partitions, FlowContext $context) : void
     {
         $streams = $context->streams();
-        $normalizer = new RowsNormalizer(new EntryNormalizer($context->config->caster(), $this->dateTimeFormat));
+        $normalizer = new RowsNormalizer(new EntryNormalizer($this->dateTimeFormat));
 
         if (!$streams->isOpen($this->path, $partitions)) {
             $stream = $streams->writeTo($this->path, $partitions);
