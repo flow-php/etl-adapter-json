@@ -10,10 +10,9 @@ use function Flow\ETL\DSL\{average, df, from_array, overwrite, ref};
 use function Flow\Filesystem\DSL\path;
 use Flow\ETL\Adapter\JSON\JsonLoader;
 use Flow\ETL\Tests\Double\FakeExtractor;
-use Flow\ETL\{Config, FlowContext, Rows};
-use PHPUnit\Framework\TestCase;
+use Flow\ETL\{Config, FlowContext, Rows, Tests\FlowTestCase};
 
-final class JsonTest extends TestCase
+final class JsonTest extends FlowTestCase
 {
     public function test_json_loader() : void
     {

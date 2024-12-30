@@ -8,11 +8,10 @@ use function Flow\ETL\Adapter\JSON\{from_json};
 use function Flow\ETL\DSL\{df, print_schema};
 use Flow\ETL\Adapter\JSON\JSONMachine\JsonExtractor;
 use Flow\ETL\Extractor\Signal;
-use Flow\ETL\{Config, Flow, FlowContext, Row, Rows};
+use Flow\ETL\{Config, Flow, FlowContext, Row, Rows, Tests\FlowTestCase};
 use Flow\Filesystem\Path;
-use PHPUnit\Framework\TestCase;
 
-final class JsonExtractorTest extends TestCase
+final class JsonExtractorTest extends FlowTestCase
 {
     public function test_extracting_json_from_local_file_stream() : void
     {
