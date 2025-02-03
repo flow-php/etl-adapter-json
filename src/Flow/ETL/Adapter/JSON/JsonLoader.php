@@ -15,6 +15,8 @@ final class JsonLoader implements Closure, Loader, Loader\FileLoader
 
     private int $flags = JSON_THROW_ON_ERROR;
 
+    private bool $jsonl = false;
+
     private bool $putRowsInNewLines = false;
 
     /**
@@ -26,10 +28,19 @@ final class JsonLoader implements Closure, Loader, Loader\FileLoader
     {
     }
 
+    public function asJsonl() : self
+    {
+        $this->jsonl = true;
+
+        return $this;
+    }
+
     public function closure(FlowContext $context) : void
     {
-        foreach ($context->streams()->listOpenStreams($this->path) as $stream) {
-            $stream->append($this->putRowsInNewLines ? "\n]" : ']');
+        if (!$this->jsonl) {
+            foreach ($context->streams()->listOpenStreams($this->path) as $stream) {
+                $stream->append($this->putRowsInNewLines ? "\n]" : ']');
+            }
         }
 
         $context->streams()->closeStreams($this->path);
@@ -85,7 +96,9 @@ final class JsonLoader implements Closure, Loader, Loader\FileLoader
                 $this->writes[$stream->path()->path()] = 0;
             }
 
-            $stream->append($this->putRowsInNewLines ? "[\n" : '[');
+            if (!$this->jsonl) {
+                $stream->append($this->putRowsInNewLines ? "[\n" : '[');
+            }
         } else {
             $stream = $streams->writeTo($this->path, $partitions);
         }
@@ -107,6 +120,7 @@ final class JsonLoader implements Closure, Loader, Loader\FileLoader
         }
 
         $separator = $this->putRowsInNewLines ? ",\n" : ',';
+        $separator = $this->jsonl ? "\n" : $separator;
 
         foreach ($normalizer->normalize($rows) as $normalizedRow) {
             try {
