@@ -8,8 +8,8 @@ use function Flow\ETL\Adapter\JSON\{from_json};
 use function Flow\ETL\DSL\{data_frame, flow_context};
 use function Flow\ETL\DSL\{df, print_schema};
 use Flow\ETL\Adapter\JSON\JSONMachine\JsonExtractor;
-use Flow\ETL\Extractor\Signal;
 use Flow\ETL\{Config, Row, Rows, Tests\FlowTestCase};
+use Flow\ETL\Extractor\Signal;
 use Flow\Filesystem\Path;
 
 final class JsonExtractorTest extends FlowTestCase

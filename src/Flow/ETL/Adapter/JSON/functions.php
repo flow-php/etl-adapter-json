@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Flow\ETL\Adapter\JSON;
 
 use Flow\ETL\Adapter\JSON\JSONMachine\{JsonExtractor, JsonLinesExtractor};
-use Flow\ETL\Row\Schema;
 use Flow\ETL\{Attribute\DocumentationDSL, Attribute\DocumentationExample, Attribute\Module, Attribute\Type};
+use Flow\ETL\Row\Schema;
 use Flow\Filesystem\Path;
 
 /**

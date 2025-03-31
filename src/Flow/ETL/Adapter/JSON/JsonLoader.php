@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Flow\ETL\Adapter\JSON;
 
+use Flow\ETL\{Adapter\JSON\RowsNormalizer\EntryNormalizer, FlowContext, Loader, Rows};
 use Flow\ETL\Exception\RuntimeException;
 use Flow\ETL\Loader\Closure;
-use Flow\ETL\{Adapter\JSON\RowsNormalizer\EntryNormalizer, FlowContext, Loader, Rows};
 use Flow\Filesystem\{DestinationStream, Partition, Path};
 
 final class JsonLoader implements Closure, Loader, Loader\FileLoader
