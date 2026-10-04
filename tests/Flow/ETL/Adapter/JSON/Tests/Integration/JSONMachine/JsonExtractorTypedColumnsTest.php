@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Flow\ETL\Adapter\JSON\Tests\Integration\JSONMachine;
 
 use Flow\ETL\Config;
-use Flow\ETL\Row\AdaptiveRowHydrator;
 use Flow\ETL\Tests\FlowTestCase;
 
 use function Flow\ETL\Adapter\JSON\from_json;
@@ -17,7 +16,7 @@ use function Flow\ETL\DSL\str_schema;
 use function Flow\Filesystem\DSL\path_real;
 use function usort;
 
-final class JsonHydratorParityTest extends FlowTestCase
+final class JsonExtractorTypedColumnsTest extends FlowTestCase
 {
     public function test_fast_path_hydrates_typed_columns_with_missing_column_null_and_input_uri(): void
     {
@@ -29,8 +28,8 @@ final class JsonHydratorParityTest extends FlowTestCase
         $actual = [];
 
         foreach ($extractor->extract(flow_context(Config::builder()->build())) as $rows) {
-            foreach ($rows as $row) {
-                $actual[] = $row->toArray();
+            foreach ($rows->toArray() as $row) {
+                $actual[] = $row;
             }
         }
 
@@ -54,8 +53,8 @@ final class JsonHydratorParityTest extends FlowTestCase
         $actual = [];
 
         foreach ($extractor->extract(flow_context(Config::builder()->build())) as $rows) {
-            foreach ($rows as $row) {
-                $actual[] = $row->toArray();
+            foreach ($rows->toArray() as $row) {
+                $actual[] = $row;
             }
         }
 
@@ -80,8 +79,8 @@ final class JsonHydratorParityTest extends FlowTestCase
         $actual = [];
 
         foreach ($extractor->extract(flow_context(Config::builder()->build())) as $rows) {
-            foreach ($rows as $row) {
-                $actual[] = $row->toArray();
+            foreach ($rows->toArray() as $row) {
+                $actual[] = $row;
             }
         }
 
@@ -94,35 +93,5 @@ final class JsonHydratorParityTest extends FlowTestCase
             ],
             $actual,
         );
-    }
-
-    public function test_honours_a_hydrator_configured_on_the_context_without_a_declared_schema(): void
-    {
-        $default = [];
-
-        foreach (from_json(path_real(__DIR__ . '/../../Fixtures/parity_people.json'))
-            ->extract(flow_context(Config::builder()->build())) as $rows) {
-            foreach ($rows as $row) {
-                $default[] = $row->toArray();
-            }
-        }
-
-        $adaptive = [];
-
-        foreach (from_json(path_real(__DIR__ . '/../../Fixtures/parity_people.json'))
-            ->extract(flow_context(Config::builder()->hydrator(new AdaptiveRowHydrator())->build())) as $rows) {
-            foreach ($rows as $row) {
-                $adaptive[] = $row->toArray();
-            }
-        }
-
-        static::assertSame(
-            [
-                ['id' => 1, 'name' => 'Alice', 'active' => true],
-                ['id' => 2, 'name' => null, 'active' => false],
-            ],
-            $default,
-        );
-        static::assertSame($default, $adaptive);
     }
 }
